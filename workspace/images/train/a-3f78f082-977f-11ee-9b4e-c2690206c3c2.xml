@@ -1,0 +1,26 @@
+<annotation>
+	<folder>all</folder>
+	<filename>a-3f78f082-977f-11ee-9b4e-c2690206c3c2.jpg</filename>
+	<path>/Users/logan/Documents/uni/Progetti/computer-vision/workspace/assets/images/all/a-3f78f082-977f-11ee-9b4e-c2690206c3c2.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>1280</width>
+		<height>720</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>a</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>249</xmin>
+			<ymin>309</ymin>
+			<xmax>570</xmax>
+			<ymax>640</ymax>
+		</bndbox>
+	</object>
+</annotation>
