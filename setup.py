@@ -72,12 +72,14 @@ except shutil.SameFileError as error:
 except Exception as error:
     print(f"File copy failed: {error}")
 
-    config = config_util.get_configs_from_pipeline_file(CONFIG_PATH)
+    
+    
+config = config_util.get_configs_from_pipeline_file(CONFIG_PATH)
+pipeline_config = pipeline_pb2.TrainEvalPipelineConfig()
 
-    pipeline_config = pipeline_pb2.TrainEvalPipelineConfig()
-    with tf.io.gfile.GFile(CONFIG_PATH, "r") as f:
-        proto_str = f.read()
-        text_format.Merge(proto_str, pipeline_config)
+with tf.io.gfile.GFile(CONFIG_PATH, "r") as f:
+    proto_str = f.read()
+    text_format.Merge(proto_str, pipeline_config)
 
     pipeline_config.model.ssd.num_classes = 5
     pipeline_config.train_config.batch_size = 4
@@ -88,16 +90,11 @@ except Exception as error:
     pipeline_config.eval_input_reader[0].label_map_path = ANNOTATION_PATH + '/label_map.pbtxt'
     pipeline_config.eval_input_reader[0].tf_record_input_reader.input_path[:] = [ANNOTATION_PATH + '/test.record']
 
-    config_text = text_format.MessageToString(pipeline_config)
-    with tf.io.gfile.GFile(CONFIG_PATH, "wb") as f:
-        f.write(config_text)
+config_text = text_format.MessageToString(pipeline_config)
+with tf.io.gfile.GFile(CONFIG_PATH, "w") as f:  # Use "w" for writing mode
+    f.write(config_text)  # Write the modified configuration back to the file
 
-    print("Execution completed successfully!")
-
-except subprocess.CalledProcessError as e:
-    print(f"Error: Command execution failed with the following error: {e}")
-except Exception as ex:
-    print(f"Error: An unexpected error occurred: {ex}")
+print("Execution completed successfully! Configuration updated.")
 
 print("Command to train your model: ")
 print("""python {}/research/object_detection/model_main_tf2.py --model_dir={}/{} --pipeline_config_path={}/{}/pipeline.config --num_train_steps=10000""".format(APIMODEL_PATH, MODEL_PATH,CUSTOM_MODEL_NAME,MODEL_PATH,CUSTOM_MODEL_NAME))

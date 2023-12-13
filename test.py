@@ -5,7 +5,7 @@ from object_detection.utils import label_map_util
 from object_detection.utils import visualization_utils as viz_utils
 from object_detection.utils import config_util
 import cv2 
-import numpy as np
+import numpy as np 
 
 WORKSPACE_PATH = './workspace'
 SCRIPTS_PATH = 'workspace/scripts'
@@ -75,5 +75,9 @@ while True:
     if cv2.waitKey(1) & 0xFF == ord('q'):
         cap.release()
         break
+
+    
+
+
 
 
