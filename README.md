@@ -48,7 +48,7 @@ Follow these steps to run the project:
 3. In the label image folder, run:
 
     ```bash
-    python3 LABELIMAG.PY
+    python3 labelImg.PY
     ```
 
 4. Label the images.
