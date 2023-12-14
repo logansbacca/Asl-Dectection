@@ -76,7 +76,7 @@ nest-asyncio==1.5.8
 numpy==1.24.3
 oauth2client==4.1.3
 oauthlib==3.2.2
-object-detection @ file:///Users/logan/Desktop/ts/models/research
+object-detection @ file:///Users/logan/Desktop/ts/workspace/models/research
 objsize==0.6.1
 opencv-python==4.8.1.78
 opencv-python-headless==4.8.1.78
